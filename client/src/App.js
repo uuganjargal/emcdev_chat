@@ -64,7 +64,7 @@ function App() {
   if (loggedIn === false){
     return (
       <div className="container">
-        <h3 className=" text-center">EMC Developers 6</h3>
+        <h3 className=" text-center">EMC Developers</h3>
         <div className="messaging"></div>
 
         <div key="message_compose" className="type_msg">
