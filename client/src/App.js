@@ -26,7 +26,8 @@ function App() {
 
       console.log('socket create', username)
 
-    let socket = socketIOClient(ENDPOINT);
+    //let socket = socketIOClient('/api/socket.io');
+    let socket = socketIOClient.connect('/', {'path': '/api/socket.io'});
     socket.on("time", data => {
       setTime(new Date(data))
     });

@@ -8,6 +8,7 @@ const io = new Server(server,  {
     cors: {
     origin: '*',
   }
+  ,path:'/api/socket.io'
 });
 
 let onlineUsers = new Set()
