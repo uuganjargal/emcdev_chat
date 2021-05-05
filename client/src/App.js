@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="container">
-      <h3 className=" text-center">EMC Developers</h3>
+      <h3 className=" text-center">EMC Developers 2</h3>
       <div className="messaging">
         <div className="inbox_msg row">
           <div className="inbox_people col-sm-12 col-md-5">
