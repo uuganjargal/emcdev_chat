@@ -1,0 +1,34 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t uuganjargal/emcdev-chat-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true uuganjargal/emcdev-chat-test npm test
+
+after_success:
+  - docker build -t uuganjargal/emcdev-chat-client ./client
+  - docker build -t uuganjargal/emcdev-chat-gateway ./gateway
+  - docker build -t uuganjargal/emcdev-chat-server ./server
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push uuganjargal/emcdev-chat-client
+  - docker push uuganjargal/emcdev-chat-gateway
+  - docker push uuganjargal/emcdev-chat-server
+
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: 'eu-west-2'
+#   app: 'cont-poll'
+#   env: 'Contpoll-env'
+#   bucket_name: 'elasticbeanstalk-eu-west-2-261535216111'
+#   bucket_path: 'cont-poll'
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
