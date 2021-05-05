@@ -21,14 +21,14 @@ after_success:
   - docker push uuganjargal/emcdev-chat-server
 
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: 'eu-west-2'
-#   app: 'cont-poll'
-#   env: 'Contpoll-env'
-#   bucket_name: 'elasticbeanstalk-eu-west-2-261535216111'
-#   bucket_path: 'cont-poll'
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-west-2'
+  app: 'docker-chat'
+  env: 'Dockerchat-env'
+  bucket_name: 'elasticbeanstalk-eu-west-2-261535216111'
+  bucket_path: 'docker-chat'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
